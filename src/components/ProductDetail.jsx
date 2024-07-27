@@ -37,7 +37,7 @@ function ProductDetail({ onClickAddToCart ,cart}) {
         <HiArrowSmLeft className="text-2xl hover:text-2xl hover:text-darkorange-500 w-10" />
       </Link>
       <img
-        className="w-4/5 mx-auto md:w-1/2 object-cover"
+        className="w-4/5 mx-auto md:w-1/2 object-cover self-center"
         src={product.thumbnail}
       />
       <div className="md:w-1/2 flex flex-col gap-6 relative">
