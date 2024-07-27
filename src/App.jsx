@@ -7,6 +7,9 @@ import { Route, Routes } from "react-router-dom";
 import {  useMemo, useState } from "react";
 import Notfound from "./components/Notfound";
 import {toast} from 'react-toastify'
+import Login  from "./components/Login";
+import Layout from "./Layout";
+
 
 function App() {
 
@@ -71,21 +74,15 @@ function App() {
   }
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Header totalCount={totalCount} />
-      <div className="mt-24"></div>
       <Routes>
-        <Route index element={<Home />}></Route>
-        <Route
-          path="/product/:idParameter"
-          element={<ProductDetail cart={cart} onClickAddToCart={addProductToCart} />}
-        ></Route>
-        <Route
-          path="/cart"
-          element={<Cart updateCart={updateCart} deleteItem={deleteItem} />}
-        ></Route>
+        <Route path='/' element={<Layout totalCount={totalCount} />}>
+          <Route path='' element={<Home/>}/>
+          <Route path='product/:idParameter' element={<ProductDetail cart={cart} onClickAddToCart={addProductToCart}/> }/>
+          <Route path="cart" element={<Cart updateCart={updateCart} deleteItem={deleteItem} />} />
+        </Route>
         <Route path="*" element={<Notfound />}></Route>
+        <Route path="login" element={<Login/>}></Route>
       </Routes>
-      <Footer />
     </div>
   );
 }
