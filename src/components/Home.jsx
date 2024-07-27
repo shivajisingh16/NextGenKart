@@ -81,7 +81,7 @@ function Home() {
     <div className="bg-white xl:max-w-[75vw] xl:mx-auto p-6  my-5">
       <div className="flex flex-col gap-2 sm:flex-row justify-around ">
         <input
-          className="w-[80%] mx-auto sm:w-fit rounded-full border-4 border-primary-500 px-3 py-1 "
+          className="w-[80%] mx-auto sm:w-fit rounded-full border-4 border-primary-500 px-3 py-1 focus:outline-none"
           type="text"
           placeholder="Filter By Search"
           value={input}

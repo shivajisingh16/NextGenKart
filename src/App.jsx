@@ -9,6 +9,7 @@ import Notfound from "./components/Notfound";
 import {toast} from 'react-toastify'
 import Login  from "./components/Login";
 import Layout from "./Layout";
+import SignUp from "./components/SignUp";
 
 
 function App() {
@@ -82,6 +83,7 @@ function App() {
         </Route>
         <Route path="*" element={<Notfound />}></Route>
         <Route path="login" element={<Login/>}></Route>
+        <Route path="signup" element={<SignUp/>}></Route>
       </Routes>
     </div>
   );
