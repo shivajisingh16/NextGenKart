@@ -4,16 +4,29 @@ import { withFormik } from "formik";
 import { MdOutlineWifiPassword ,MdEmail } from "react-icons/md";
 import Input from "./Input";
 import * as Yup from "yup";
+import { Link, Navigate } from "react-router-dom";
+import axios from 'axios'
+import WithUserHoc from "../Hoc/WithUserHoc";
+import { toast } from "react-toastify";
 
 const schema = Yup.object({
   email: Yup.string().email().required(),
-  password: Yup.string().required().min(3).max(8),
+  password: Yup.string().required().min(8).max(20),
 });
 
-const onFormSubmit = (values) => {
-  console.log(values.username, values.password);
+const onFormSubmit = (values,bag) => {
+  const {setUser} =bag.props;
+  axios.post("https://myeasykart.codeyogi.io/login",{
+    email:values.email,
+    password:values.password,
+    }).then((response)=>{
+    const {user,token} = response.data;
+    setUser(user);
+    localStorage.setItem('token',token)
+  }).catch((error)=>{
+    toast.error("Invalid Credentials");
+  })
 };
-
 export function Login({
   handleSubmit,
   handleBlur,
@@ -22,14 +35,16 @@ export function Login({
   errors,
   touched,
   isValid,
+  user
 }) {
+  if(user)return <Navigate to='/'/>
   return (
     <div className="grid place-items-center text-center h-screen bg-[linear-gradient(135deg,#fc2a2a,white,#fc2a2a)] ">
       <h2 className="font-bold text-4xl">Login to Next E-Store</h2>
-      <div className="w-80 sm:w-96 h-[350px] bg-[#fc2a2a] rounded-lg shadow-xl border-2 border-white"></div>
+      <div className="px-8 py-20 bg-[#fc2a2a] rounded-lg shadow-xl border-2 border-white">
       <form
         onSubmit={handleSubmit}
-        className="flex gap-4  sm:w-80 flex-col absolute z-10"
+        className="flex gap-4  sm:w-80 flex-col"
       >
         <Input
           onChange={handleChange}
@@ -63,13 +78,16 @@ export function Login({
           LOGIN
         </button>
       </form>
-      <p className="font-semibold text-lg">Dont't have an Account SignUp</p>
+      </div>
+      <p className="font-semibold text-lg">Dont't have an Account <Link className="underline text-xl italic" to='/signup'>SignUp</Link></p>
     </div>
   );
 }
 
-export default withFormik({
+const EasyLogin = withFormik({
   validationSchema: schema,
   validateOnMount: true,
   handleSubmit: onFormSubmit,
-})(Login);
+});
+
+export default WithUserHoc(EasyLogin(Login));

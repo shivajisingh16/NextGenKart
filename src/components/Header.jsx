@@ -2,7 +2,13 @@ import React, { memo } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-function Header({ totalCount }) {
+import WithUserHoc from "../Hoc/WithUserHoc";
+function Header({ totalCount ,user,setUser}) {
+  function logout(){
+    localStorage.removeItem('token');
+    setUser(undefined);
+    //api calling left
+  }
   return (
     <div className="flex justify-between px-4 sm:px-10 md:px-16 items-center bg-white w-full py-3 fixed top-0 z-10">
       <img
@@ -23,15 +29,15 @@ function Header({ totalCount }) {
             <p className="font-bold text-xl">
               Hi{" "}
               <span className="text-darkorange-500 text-lg font-semibold">
-                Shivaji Singh
+                {user.full_name}
               </span>
             </p>
           </div>
-          <Link to='/login' className="hover:bg-darkorange-500 bg-primary-500  font-semibold text-white py-1 px-4 rounded-full" >Login</Link>
+          <button onClick={logout} className="hover:bg-darkorange-500 bg-primary-500  font-semibold text-white py-1 px-4 rounded-full" >Logout</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default memo(Header);
+export default WithUserHoc(Header);
