@@ -1,6 +1,5 @@
-import Header from "./components/Header";
+
 import Home from "./components/Home";
-import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import ProductDetail from "./components/ProductDetail";
 import { Route, Routes } from "react-router-dom";
@@ -16,7 +15,7 @@ import Loading from "./components/Loading";
 export const userContext = createContext();
 
 function App() {
-  let [user,setUser] = useState();
+  let [user,setUser] = useState(); 
   let [loading,setLoading] =useState(true);
   useEffect(()=>{
     let token=localStorage.getItem('token');
@@ -27,6 +26,8 @@ function App() {
         }
       }).then((response)=>{
         setUser(response.data);
+        setLoading(false);
+      }).catch(()=>{
         setLoading(false);
       })
     }

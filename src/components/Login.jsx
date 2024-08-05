@@ -24,7 +24,7 @@ const onFormSubmit = (values,bag) => {
     setUser(user);
     localStorage.setItem('token',token)
   }).catch((error)=>{
-    toast.error("Invalid Credentials");
+    toast.error(error.response.data);
   })
 };
 export function Login({

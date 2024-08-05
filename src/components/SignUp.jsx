@@ -6,6 +6,8 @@ import Input from "./Input";
 import * as Yup from "yup";
 import { Link, Navigate } from "react-router-dom";
 import WithUserHoc from "../Hoc/WithUserHoc";
+import axios from "axios";
+import {toast} from 'react-toastify'
 
 const schema = Yup.object({
   username: Yup.string().required().max(25),
@@ -16,7 +18,7 @@ const schema = Yup.object({
 const onFormSubmit = (values, bag) => {
   const { setUser } = bag.props;
    axios
-    .post("https://myeasykart.codeyogi.io/login", {
+    .post("https://myeasykart.codeyogi.io/signup",{
       fullName: values.username,
       email: values.email,
       password: values.password,
@@ -27,7 +29,7 @@ const onFormSubmit = (values, bag) => {
       localStorage.setItem("token", token);
     })
     .catch((error) => {
-      toast.error("Invalid Credentials");
+      toast.error("Unique Credentials Required");
     });
 };
 
