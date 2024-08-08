@@ -35,8 +35,8 @@ function handleCountChange(id,event){
   return (
     <>
       <div className="md:w-[90vw] bg-white rounded-sm grow my-4 sm:p-8 sm:mx-auto flex gap-8 flex-col">
-      <Link to="/">
-        <HiArrowSmLeft className="text-2xl hover:text-2xl hover:text-darkorange-500 w-10 ml-10 mt-5 " />
+      <Link className="w-fit px-4 py-1 rounded-md font-semibold bg-primary-500 text-white ml-10 mt-5 "  to="/">
+        Back
       </Link>
    
       <div className="w-fit lg:w-[80%] mx-auto border-0 sm:border border-gray-200 px-5 sm:px-0 ">
