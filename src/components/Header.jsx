@@ -19,9 +19,9 @@ function Header({ totalCount ,user,setUser}) {
       <div className="relative flex items-center gap-3">
         <Link to="/cart">
           <HiOutlineShoppingBag className="text-5xl md:mr-20 md:text-6xl" />
-          <p className="bg-primary-500 h-5 md:h-6 text-center aspect-square  text-white font-semibold absolute top-7 left-4 md:pb-1 rounded-full md:top-7 md:left-5 text-sm md:text-md ">
+          {totalCount>0 &&<p className="bg-primary-500 h-5 md:h-6 text-center aspect-square  text-white font-semibold absolute top-7 left-4 md:pb-1 rounded-full md:top-7 md:left-5 text-sm md:text-md ">
             {totalCount}
-          </p>
+          </p>}
         </Link>
         <div className="flex flex-col gap-1 items-center">
           <div className="flex items-center gap-2 ">
@@ -29,11 +29,11 @@ function Header({ totalCount ,user,setUser}) {
             <p className="font-bold text-xl">
               Hi{" "}
               <span className="text-darkorange-500 text-lg font-semibold">
-                {user.full_name}
+                {user.full_name.charAt(0).toUpperCase()+user.full_name.slice(1)}
               </span>
             </p>
           </div>
-          <button onClick={logout} className="hover:bg-darkorange-500 bg-primary-500  font-semibold text-white py-1 px-4 rounded-full" >Logout</button>
+          <button onClick={logout} className="hover:bg-darkorange-500 bg-gray-400  font-semibold text-white py-1 px-4 rounded-xl" >Logout</button>
         </div>
       </div>
     </div>

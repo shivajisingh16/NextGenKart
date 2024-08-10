@@ -12,7 +12,7 @@ function CartRow({
 }) {
   return (
     <>
-      <tr className="shadow-lg sm:shadow-none sm:text-center sm:border-t border-gray-200 space-y-3">
+      <tr className="shadow-xl border sm:shadow-none sm:text-center sm:border-t border-gray-200 space-y-3">
         <td className="flex items-center justify-evenly gap-5 p-2 sm:p-0">
           <button onClick={() => deleteItem(id)}>
             <TiDeleteOutline className="text-3xl text-gray-300 " />

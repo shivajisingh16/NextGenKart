@@ -39,7 +39,7 @@ function handleCountChange(id,event){
         Back
       </Link>
    
-      <div className="w-fit lg:w-[80%] mx-auto border-0 sm:border border-gray-200 px-5 sm:px-0 ">
+      <div className="w-fit lg:w-[80%] mx-auto border-0 sm:border border-gray-200 px-5 sm:px-0 max-h-[400px] overflow-y-scroll">
         <table className=" w-full">
           <thead className="hidden sm:table-header-group">
           <tr className="text-gray-700 font-semibold bg-gray-50">
@@ -66,13 +66,13 @@ function handleCountChange(id,event){
           ))}
           </tbody>
         </table>
-        <div className="w-full  mx-auto p-4 flex flex-col md:flex-row justify-between border-t border-gray-200 gap-3 items-end">
+        </div>
+        <div className="w-fit lg:w-[80%] sm:mt-[-33px]  mx-auto p-4 flex flex-col sm:flex-row justify-between  gap-3 items-end">
           <div className="flex gap-2">
             <input type="text" placeholder="Coupon Code" className="border border-gray-400 w-36 px-2 py-1 font-semibold rounded-md" />
             <button className="hover:bg-darkorange-500 bg-primary-500  rounded-md font-semibold text-white px-8 py-1">Apply Coupon</button>
           </div>
           <button disabled={!changed} onClick={()=>updateCart(setChanged,cart)} className="hover:bg-darkorange-500 bg-primary-500 disabled:bg-primary-100  rounded-md font-semibold text-white px-8 py-1 self-stretch sm:self-end">Update Cart</button>
-        </div>
         </div>
         <div className="w-[80%] sm:w-80 font-semibold text-gray-600  border border-gray-200 self-end mx-auto sm:mr-36">
           <h3 className="bg-gray-50 p-2 border-b border-gray-200 text-lg">Cart totals</h3>

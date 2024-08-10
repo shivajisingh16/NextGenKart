@@ -41,9 +41,9 @@ function ProductDetail({ onClickAddToCart ,cart}) {
         src={product.thumbnail}
       />
       <div className="md:w-1/2 flex flex-col gap-6 relative">
-        <h2 className="text-4xl text-gray-600 font-bold ">{product.title}</h2>
+        <h2 className="text-2xl sm:text-4xl text-gray-600 font-bold ">{product.title}</h2>
         <div className="flex gap-6 flex-wrap">
-          <p className="font-semibold text-gray-700 text-2xl ">
+          <p className="font-semibold text-gray-700 text-xl sm:text-2xl ">
             ${product.price}
           </p>
           <p className="flex gap-1 items-center">
@@ -70,19 +70,19 @@ function ProductDetail({ onClickAddToCart ,cart}) {
         </p>
         <div className="flex gap-4 flex-wrap items-center">
           <button
-            className="pb-1 bg-gray-500 text-white w-10 aspect-square rounded-full font-bold text-2xl hover:bg-black hover:scale-110"
+            className=" bg-gray-500 text-white w-10 aspect-square rounded-full font-bold text-2xl hover:bg-black hover:scale-110"
             onClick={handleOnClick}
           >
             -
           </button>
           <input
-            className="w-10 border border-gray-300 rounded-md py-1 px-2"
+            className="max-w-10 w-fit border border-gray-300 rounded-md py-1 px-2"
             type="text"
             value={count}
             readOnly
           />
           <button
-            className="pb-1 bg-gray-500 w-10  text-white aspect-square rounded-full font-bold text-2xl hover:bg-black hover:scale-110"
+            className=" bg-gray-500 w-10  text-white aspect-square rounded-full font-bold text-2xl hover:bg-black hover:scale-110"
             onClick={handleOnClick}
           >
             +

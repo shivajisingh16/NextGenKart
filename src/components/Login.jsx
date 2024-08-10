@@ -40,11 +40,11 @@ export function Login({
   if(user)return <Navigate to='/'/>
   return (
     <div className="grid place-items-center text-center h-screen bg-[linear-gradient(135deg,#fc2a2a,white,#fc2a2a)] ">
-      <h2 className="font-bold text-4xl">Login to Next E-Store</h2>
-      <div className="px-8 py-20 bg-[#fc2a2a] rounded-lg shadow-xl border-2 border-white">
+      <h2 className="font-bold text-2xl sm:text-4xl">Login to Next E-Store</h2>
+      <div className="px-5 py-20 bg-[#fc2a2a] rounded-lg shadow-xl border-2 border-white">
       <form
         onSubmit={handleSubmit}
-        className="flex gap-4  sm:w-80 flex-col"
+        className="flex gap-4 w-[290px]  sm:w-80 flex-col"
       >
         <Input
           onChange={handleChange}
