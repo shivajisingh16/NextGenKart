@@ -15,7 +15,7 @@ function CartRow({
       <tr className="shadow-xl border sm:shadow-none sm:text-center sm:border-t border-gray-200 space-y-3">
         <td className="flex items-center justify-evenly gap-5 p-2 sm:p-0">
           <button onClick={() => deleteItem(id)}>
-            <TiDeleteOutline className="text-3xl text-gray-300 " />
+            <TiDeleteOutline className="text-3xl text-gray-300 hover:text-primary-500" />
           </button>
           <img className="w-16 my-1 aspect-square" src={img} alt="" />
           <h3 className="text-primary-500 font-semibold w-52">{title}</h3>

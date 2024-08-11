@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { userContext } from '../App'
+import { userContext } from '../Providers/UserProvider';
+
 
 function WithUserHoc(IncomingComponent) {
   

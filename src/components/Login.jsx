@@ -37,7 +37,6 @@ export function Login({
   isValid,
   user
 }) {
-  if(user)return <Navigate to='/'/>
   return (
     <div className="grid place-items-center text-center h-screen bg-[linear-gradient(135deg,#fc2a2a,white,#fc2a2a)] ">
       <h2 className="font-bold text-2xl sm:text-4xl">Login to Next E-Store</h2>

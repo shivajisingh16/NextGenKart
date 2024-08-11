@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import WithUserHoc from './Hoc/WithUserHoc'
 
 function Layout({totalCount,user}) {
-  if(!user)return <Navigate to='/login' />
+ 
   return (
     <>
     <Header totalCount={totalCount}/>
