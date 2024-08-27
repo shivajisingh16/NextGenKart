@@ -4,8 +4,7 @@ import { MdOutlineWifiPassword, MdEmail } from "react-icons/md";
 import { withFormik } from "formik";
 import Input from "./Input";
 import * as Yup from "yup";
-import { Link, Navigate } from "react-router-dom";
-import WithUserHoc from "../Hoc/WithUserHoc";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import {toast} from 'react-toastify'
 
@@ -41,9 +40,7 @@ export function SignUp({
   errors,
   touched,
   isValid,
-  user,
 }) {
-  if (user) return <Navigate to="/" />;
   return (
     <div className="grid place-items-center text-center h-screen bg-[linear-gradient(135deg,#fc2a2a,white,#fc2a2a)] ">
       <h2 className="font-bold text-2xl sm:text-4xl">SignUp for Next E-Store</h2>
@@ -110,4 +107,4 @@ const EasySignUp = withFormik({
   handleSubmit: onFormSubmit,
 });
 
-export default WithUserHoc(EasySignUp(SignUp));
+export default EasySignUp(SignUp);

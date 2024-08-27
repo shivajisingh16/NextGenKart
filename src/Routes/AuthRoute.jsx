@@ -1,5 +1,5 @@
 import React from 'react'
-import WithUserHoc from '../Hoc/WithUserHoc'
+import { withUserHoc } from '../Hoc/WithContextHocCreater';
 import { Navigate } from 'react-router-dom'
 
 function AuthRoute({user,children}) {
@@ -9,4 +9,4 @@ function AuthRoute({user,children}) {
  return children;
 }
 
-export default WithUserHoc(AuthRoute)
+export default withUserHoc(AuthRoute)

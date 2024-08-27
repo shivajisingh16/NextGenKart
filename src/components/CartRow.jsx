@@ -39,6 +39,4 @@ function CartRow({
   );
 }
 
-export default memo(CartRow
-
-);
+export default memo(CartRow);

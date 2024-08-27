@@ -1,13 +1,12 @@
 import React from "react";
-import { FiUser } from "react-icons/fi";
 import { withFormik } from "formik";
 import { MdOutlineWifiPassword ,MdEmail } from "react-icons/md";
 import Input from "./Input";
 import * as Yup from "yup";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios'
-import WithUserHoc from "../Hoc/WithUserHoc";
 import { toast } from "react-toastify";
+import { withUserHoc } from "../Hoc/WithContextHocCreater";
 
 const schema = Yup.object({
   email: Yup.string().email().required(),
@@ -24,7 +23,7 @@ const onFormSubmit = (values,bag) => {
     setUser(user);
     localStorage.setItem('token',token)
   }).catch((error)=>{
-    toast.error(error.response.data);
+    toast.error("Invalid data");
   })
 };
 export function Login({
@@ -35,7 +34,6 @@ export function Login({
   errors,
   touched,
   isValid,
-  user
 }) {
   return (
     <div className="grid place-items-center text-center h-screen bg-[linear-gradient(135deg,#fc2a2a,white,#fc2a2a)] ">
@@ -89,4 +87,4 @@ const EasyLogin = withFormik({
   handleSubmit: onFormSubmit,
 });
 
-export default WithUserHoc(EasyLogin(Login));
+export default withUserHoc(EasyLogin(Login));

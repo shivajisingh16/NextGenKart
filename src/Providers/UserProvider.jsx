@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from "axios";
-import { createContext, useEffect,useState} from 'react'
+import { userContext } from "../contexts"; 
+
+import {  useEffect,useState} from 'react'
 import Loading from '../components/Loading';
-export const userContext = createContext();
 
 function UserProvider({children}) {
   let [user,setUser] = useState(); 
@@ -29,7 +30,7 @@ function UserProvider({children}) {
   if(loading)return <Loading/>
   
   return(
-    <userContext.Provider value={{user,setUser}}>
+    <userContext.Provider value={{isLoggedIn: !!localStorage.getItem('token'),user,setUser}}>
       {children}
     </userContext.Provider>
   )

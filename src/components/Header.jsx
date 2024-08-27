@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import WithUserHoc from "../Hoc/WithUserHoc";
+import { withCartHoc, withUserHoc } from "../Hoc/WithContextHocCreater";
 function Header({ totalCount ,user,setUser}) {
+
   function logout(){
     localStorage.removeItem('token');
     setUser(undefined);
@@ -23,7 +24,7 @@ function Header({ totalCount ,user,setUser}) {
             {totalCount}
           </p>}
         </Link>
-        <div className="flex flex-col gap-1 items-center">
+        {user ? <div className="flex flex-col gap-1 items-center">
           <div className="flex items-center gap-2 ">
             <CgProfile className="font-bold text-darkorange-500 text-3xl rounded-full" />
             <p className="font-bold text-xl">
@@ -34,11 +35,12 @@ function Header({ totalCount ,user,setUser}) {
             </p>
           </div>
           <button onClick={logout} className="hover:bg-darkorange-500 bg-gray-400  font-semibold text-white py-1 px-4 rounded-xl" >Logout</button>
-        </div>
+        </div>:  <Link to="/login" className="hover:bg-darkorange-500 bg-gray-400  font-semibold text-white py-1 px-4 rounded-xl" >SignUp / Login</Link> }
+
       </div>
     </div>
   );
 }
 
-export default WithUserHoc(Header);
+export default withUserHoc(withCartHoc(Header));
 

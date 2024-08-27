@@ -1,14 +1,13 @@
 import React from 'react'
 import Header from './components/Header'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import Footer from './components/Footer'
-import WithUserHoc from './Hoc/WithUserHoc'
 
-function Layout({totalCount,user}) {
+function Layout() {
  
   return (
     <>
-    <Header totalCount={totalCount}/>
+    <Header />
     <div className="mt-24"></div>
     <Outlet/>
     <Footer/>
@@ -16,4 +15,4 @@ function Layout({totalCount,user}) {
   )
 }
 
-export default WithUserHoc(Layout)
+export default Layout

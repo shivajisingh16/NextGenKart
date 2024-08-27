@@ -4,17 +4,18 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { HiArrowSmLeft } from "react-icons/hi";
 import Loading from "./Loading";
 import { nanoid } from "nanoid";
+import { withCartHoc } from "../Hoc/WithContextHocCreater";
 import { getProductsId } from "../data/apiData";
 import Notfound from "./Notfound";
 
-function ProductDetail({ onClickAddToCart ,cart}) {
+function ProductDetail({quantityMap, addProductToCart }) {
   let { idParameter } = useParams();
   let [product, setProduct] = useState();
   const [count, setCount] = useState(
-    cart[idParameter] ? cart[idParameter].count : 0
+    quantityMap[idParameter] || 0
   );
   useEffect(() => {
-    setCount(cart[idParameter] ? cart[idParameter].count : 0);
+    setCount(quantityMap[idParameter] || 0);
   }, [idParameter]);
   useEffect(() => {
     let response = getProductsId(idParameter);
@@ -31,6 +32,7 @@ function ProductDetail({ onClickAddToCart ,cart}) {
       setCount(count + 1);
     }
   }
+  
   return (
     <div className="flex flex-col md:flex-row max-w-6xl gap-8 shadow-lg p-8 bg-white mx-auto my-4 min-h-[70vh]">
       <Link to="/">
@@ -38,7 +40,7 @@ function ProductDetail({ onClickAddToCart ,cart}) {
       </Link>
       <img
         className="w-4/5 mx-auto md:w-1/2 object-cover self-center"
-        src={product.thumbnail}
+        src="https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/thumbnail.png  "
       />
       <div className="md:w-1/2 flex flex-col gap-6 relative">
         <h2 className="text-2xl sm:text-4xl text-gray-600 font-bold ">{product.title}</h2>
@@ -89,12 +91,9 @@ function ProductDetail({ onClickAddToCart ,cart}) {
           </button>
           <button
             onClick={() => {
-              onClickAddToCart(
+              addProductToCart(
                 idParameter,
                 count,
-                product.thumbnail,
-                product.title,
-                product.price
               );
             }}
             className="hover:bg-darkorange-500 bg-primary-500  rounded-md font-semibold text-white px-8 py-1"
@@ -125,4 +124,4 @@ function ProductDetail({ onClickAddToCart ,cart}) {
   );
 }
 
-export default ProductDetail;
+export default withCartHoc(ProductDetail);
