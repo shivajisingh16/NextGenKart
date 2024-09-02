@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import CartRow from "./CartRow";
-import { getProductsByIds } from "../data/apiData";
 import { withCartHoc } from "../Hoc/WithContextHocCreater";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -9,23 +8,13 @@ import EmptyCart from "./EmptyCart";
 import Loading from "./Loading";
 function Cart({ cart, quantityMap, deleteItem, updateCart }) {
   let [changed, setChanged] = useState(false);
-  let [localQuantityMap,setLocalQuantityMap] = useState(quantityMap);
-  console.log(cart);
-  // let [cartProducts,setCartProducts] =useState();
-
-  // useEffect(()=>{
-  //   let ids = Object.keys(cart);
-  //   getProductsByIds(ids).then((response)=>{
-  //     setCartProducts(response);
-  //   })
-  // },[cart])
+  let [localQuantityMap, setLocalQuantityMap] = useState(quantityMap);
 
   let subTotal = useMemo(() => {
-    // if(!cart)return 0;
     return cart.reduce((total, item) => {
       return total + item.product.price * localQuantityMap[item.product.id];
     }, 0);
-  }, [cart,localQuantityMap]);
+  }, [cart, localQuantityMap]);
 
   if (Object.keys(cart).length == 0) {
     return <EmptyCart />;
@@ -68,7 +57,9 @@ function Cart({ cart, quantityMap, deleteItem, updateCart }) {
                   img="https://cdn.dummyjson.com/products/images/furniture/Knoll%20Saarinen%20Executive%20Conference%20Chair/thumbnail.png"
                   price={item.product.price}
                   count={localQuantityMap[item.product.id]}
-                  totalPrice={item.product.price * localQuantityMap[item.product.id]}
+                  totalPrice={
+                    item.product.price * localQuantityMap[item.product.id]
+                  }
                   deleteItem={deleteItem}
                   handleCountChange={handleCountChange}
                 />
